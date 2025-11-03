@@ -32,5 +32,3 @@ npm run build
 - Optimized for: Automotive LCD/OLED displays
 - Touch: Capacitive touchscreen
 
-## License
-MIT
