@@ -1,0 +1,43 @@
+# Core Backend Framework
+fastapi
+uvicorn[standard]
+websockets
+python-multipart
+pydantic
+
+# CARLA Simulator
+carla
+
+# Computer Vision & ML
+opencv-python
+numpy
+scipy
+scikit-learn
+
+# Deep Learning (optional, for advanced driver monitoring)
+torch
+torchvision
+# tensorflow==2.15.0  # Uncomment if using TensorFlow models
+
+# Face & Emotion Recognition (optional)
+# dlib
+# face-recognition
+# fer
+
+# Data Processing
+pandas
+pillow
+
+# Utilities
+python-dotenv
+pyyaml
+aiofiles
+
+# Logging & Monitoring
+loguru
+prometheus-client
+
+# Testing (optional)
+pytest
+pytest-asyncio
+httpx

@@ -1,0 +1,34 @@
+[project]
+name = "backend"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "aiofiles>=25.1.0",
+    "carla>=0.9.16",
+    "fastapi>=0.121.0",
+    "httpx>=0.28.1",
+    "loguru>=0.7.3",
+    "numpy>=2.2.6",
+    "opencv-python>=4.11.0.86",
+    "pandas>=2.3.3",
+    "pillow>=12.0.0",
+    "prometheus-client>=0.23.1",
+    "pydantic>=2.12.3",
+    "pytest>=8.4.2",
+    "pytest-asyncio>=1.2.0",
+    "python-dotenv>=1.2.1",
+    "python-multipart>=0.0.20",
+    "pyyaml>=6.0.3",
+    "scikit-learn>=1.7.2",
+    "scipy>=1.15.3",
+    "torch>=2.9.0",
+    "torchvision>=0.24.0",
+    "uvicorn[standard]>=0.38.0",
+    "websockets>=15.0.1",
+    "pygame",
+    "dlib>=20.0.0",
+    "deepface>=0.0.95",
+    "tf-keras>=2.20.1",
+]
