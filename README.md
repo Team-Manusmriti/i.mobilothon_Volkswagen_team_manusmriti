@@ -42,7 +42,7 @@ VigilanceAI transforms driver assistance from passive monitoring to active careâ
 
 ## Architecture Overview
 
-![Architecture Diagram]([docs/architecture.png](https://github.com/user-attachments/assets/e023c864-c39f-4c13-9e2e-41da8d36ec30))
+![Architecture Diagram](https://github.com/user-attachments/assets/7543fddb-9264-492d-9f38-e3716281f96f)
 
 ---
 
