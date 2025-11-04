@@ -77,5 +77,4 @@ VigilanceAI transforms driver assistance from passive monitoring to active care�
   
 ---
 
-
-## Made with 💗 for Volkswagen- i.mobilothon-5.0 
+## Made with 💗 for Volkswagen - i.mobilothon-5.0 
