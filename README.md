@@ -1,22 +1,41 @@
-## VigilanceAI – AI-Enhanced Driver Wellness Monitoring
-
-**Volkswagen Hackathon Submission – Team Manusmriti**
-
-
-VigilanceAI is an intelligent co-pilot engineered to redefine road safety by prioritizing the driver's overall well-being. Unlike conventional systems that react only when danger is imminent, VigilanceAI takes a proactive approach. It leverages multi-modal AI to integrate cabin video analytics—monitoring signs of drowsiness, stress, and medical distress—with real-time vehicle dynamics such as driving patterns and erratic behavior.
-
-This enables a dual-layered support system:
-
-- **Conversational AI Co-Pilot**: Offers real-time, context-aware assistance to manage everyday fatigue and stress. Whether it's suggesting alternate routes during traffic congestion or playing soothing music, it adapts to the driver's needs.
-- **Emergency Event Detection System**: Goes beyond basic inactivity alerts to detect serious medical emergencies, collisions, or sudden loss of control. It automatically activates safety protocols to stabilize the vehicle and summon help.
-
-VigilanceAI transforms driver assistance from passive monitoring to active care—serving as a trusted companion on every journey.
+# VigilanceAI – AI-Enhanced Driver Wellness Monitoring
 
 ## Problem Statement
 
 **AI-Enhanced Driver Wellness Monitoring**
 
 >Fatigue and stress significantly reduce driver alertness, increasing the risk of accidents. Using cabin video, steering behavior, and optional wearables, create a solution that detects drowsiness or stress levels and suggests safe, non-distracting interventions to keep drivers and passengers safe.
+
+---
+
+## Team Name
+**Manusmriti**
+
+## Team Members
+- **Member 1**: Nandika Gupta
+
+- **Member 2**: Madhur Prakash Mangal
+
+- **Member 3**: Nidhi Singh
+
+- **Member 4**: Pranav Sharma
+
+---
+
+## Demo Video Link
+[YouTube Video Link](https://youtube.com/watch?v=example)
+
+---
+
+# Project Artefacts
+
+## Technical Documentation
+[Technical Docs](/doc/README.md)  
+*All technical details are documented in markdown files, including system architecture, implementation details, performance metrics, and deployment instructions.*
+
+## Source Code
+[GitHub Repository](https://github.com/Team-Manusmriti/i.mobilothon_Volkswagen_team_manusmriti/tree/main/src)  
+*Complete Flutter application source code with all modules, dependencies, and build configurations for successful installation and execution on Android platforms.*
 
 ---
 
