@@ -48,7 +48,7 @@ VigilanceAI transforms driver assistance from passive monitoring to active careâ
 
 ## Process Flow
 
-![Process Flow](https://github.com/user-attachments/assets/7543fddb-9264-492d-9f38-e3716281f96f)
+![Process Flow](https://github.com/user-attachments/assets/8418a9f4-dd7d-480e-9827-a54178245812)
 
 ---
 
@@ -74,3 +74,8 @@ VigilanceAI transforms driver assistance from passive monitoring to active careâ
 ### Embedded Integration
 - Raspberry Pi, CAN Bus, OBD-II
 - Infrared cameras, microphones, and sensors
+  
+---
+
+
+## Made with ðŸ’— for Volkswagen- i.mobilothon-5.0 
