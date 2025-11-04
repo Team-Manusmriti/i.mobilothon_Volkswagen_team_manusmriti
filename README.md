@@ -48,7 +48,7 @@ VigilanceAI transforms driver assistance from passive monitoring to active careâ
 
 ## Process Flow
 
-![Process Flow](docs/process_flow.png)
+![Process Flow](https://github.com/user-attachments/assets/7543fddb-9264-492d-9f38-e3716281f96f)
 
 ---
 
