@@ -56,7 +56,7 @@ VigilanceAI transforms driver assistance from passive monitoring to active careâ
 
 | Dashboard | Wellness Monitor | Emergency Protocol | AI Co-Pilot |
 |----------|------------------|--------------------|-------------|
-| ![](docs/wireframes/dashboard.png) | ![](docs/wireframes/wellness_monitor.png) | ![](docs/wireframes/emergency_protocol.png) | ![](docs/wireframes/ai_copilot.png) |
+| ![](docs/wireframes/dashboard.png) | ![](https://github.com/user-attachments/assets/d522455b-b064-4a53-b152-0bca2df6e2c4) | ![](https://github.com/user-attachments/assets/48361d5d-ca96-48f3-a3aa-8161036d3b24g) | ![](https://github.com/user-attachments/assets/966ff889-2ca3-4104-a76d-1fc13b98e6d8) |
 
 ---
 
