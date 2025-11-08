@@ -31,4 +31,12 @@ dependencies = [
     "dlib>=20.0.0",
     "deepface>=0.0.95",
     "tf-keras>=2.20.1",
+    "imutils>=0.5.4",
+    "pyttsx3>=2.99",
+    "sounddevice>=0.5.3",
+    "speechrecognition>=3.14.3",
+    "pyaudio>=0.2.14",
+    "transformers>=4.57.1",
+    "langchain-core>=1.0.3",
+    "langchain-groq>=1.0.0",
 ]

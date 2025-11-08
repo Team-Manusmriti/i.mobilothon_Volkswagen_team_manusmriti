@@ -39,7 +39,7 @@ This technical documentation covers:
 ## Related Resources
 
 - [Main Project README](../README.md) - Project overview and features
-- [Source Code](../src/) - Complete Flutter application implementation
+- [Source Code](../src/) - Complete application implementation with React frontend and Python backend
 - [Demo Video](https://youtube.com/watch?v=example) - Live demonstration
 
 ---

@@ -30,12 +30,12 @@
 # Project Artefacts
 
 ## Technical Documentation
-[Technical Docs](/doc/README.md)  
+[Technical Docs](doc/README.md)  
 *All technical details are documented in markdown files, including system architecture, implementation details, performance metrics, and deployment instructions.*
 
 ## Source Code
-[GitHub Repository](https://github.com/Team-Manusmriti/i.mobilothon_Volkswagen_team_manusmriti/tree/main/src)  
-*Complete Flutter application source code with all modules, dependencies, and build configurations for successful installation and execution on Android platforms.*
+[Source Code](src/)  
+*Complete application source code including React frontend, Python backend, and CARLA simulation modules with all dependencies and build configurations.*
 
 ---
 
