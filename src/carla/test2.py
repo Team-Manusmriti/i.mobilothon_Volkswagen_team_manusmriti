@@ -14,7 +14,9 @@ from deepface import DeepFace
 from scipy.spatial import distance
 import requests
 from bs4 import BeautifulSoup
-import datetime, requests, random, platform, logging
+import datetime, requests, random, platform
+import numpy as np
+import mediapipe as mp
 
 # ===================== CONFIG =====================
 DLIB_MODEL = "backend/models/shape_predictor_68_face_landmarks.dat"
@@ -144,25 +146,68 @@ driver_state = {"state": "unknown", "emotion": "unknown"}
 blink_count = consec_blink = 0
 prev_ear, frame_idx = 1.0, 0
 last_emotion, last_analysis_time = "unknown", time.time()
-module_alive = True
 cooldowns = {"drowsy": 0, "alert": 0, "emotion": {}}
+module_alive = True
+WS_INTERVAL = 5  # seconds
 
+mp_selfie = mp.solutions.selfie_segmentation
+segmentor = mp_selfie.SelfieSegmentation(model_selection=1)
 
 # ===================== DRIVER ANALYSIS =====================
 def analyze():
     global blink_count, consec_blink, prev_ear, frame_idx
     global last_emotion, last_analysis_time, module_alive
-    cap = cv2.VideoCapture(0)
-    if not cap.isOpened():
-        raise RuntimeError("Webcam not found.")
+    global last_sent_state, last_ws_time
+    
+    # Initialize WebSocket tracking variables
+    last_sent_state = {"state": "", "emotion": ""}
+    last_ws_time = 0
 
+    print("Initializing camera...")
+    cap = cv2.VideoCapture(0)
+    cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
+    cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
+    
+    if not cap.isOpened():
+        print("Failed to open camera with index 0, trying index 1...")
+        cap = cv2.VideoCapture(1)
+        if not cap.isOpened():
+            raise RuntimeError("No webcam found. Please check camera connection.")
+    
+    print("Camera initialized successfully")
     speak("Webcam driver monitoring started.")
+    
     while True:
         ok, frame = cap.read()
         if not ok:
             time.sleep(0.05)
             continue
 
+        frame = cv2.resize(frame, (640, 480))
+        rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+
+        # ============ PERSON SEGMENTATION ============
+        try:
+            result = segmentor.process(rgb)  # Get mask for body
+            mask = result.segmentation_mask
+            
+            # Improve mask processing
+            mask = (mask > 0.3).astype(np.uint8)
+            kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5))
+            mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, kernel)
+            mask = cv2.GaussianBlur(mask.astype(np.float32), (3, 3), 0)
+            
+            # Create blurred background
+            blurred_frame = cv2.GaussianBlur(frame, (55, 55), 0)
+            
+            # Combine with smooth blending
+            mask_3d = np.stack([mask] * 3, axis=2)
+            frame = (frame * mask_3d + blurred_frame * (1 - mask_3d)).astype(np.uint8)
+        except Exception as e:
+            print(f"MediaPipe error: {e}")
+            # Continue without background blur if MediaPipe fails
+
+        # ================= FACE + MONITOR LOGIC =================
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         rects = detector(gray, 0)
         frame_idx += 1
@@ -170,7 +215,7 @@ def analyze():
         if len(rects) == 0:
             driver_state.update({"state": "unknown", "emotion": "unknown"})
             cv2.putText(frame, "No face detected", (10, 110),
-                        cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0,0,255), 2)
+                        cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 0, 255), 2)
         else:
             drowsy, emotion = "Unknown", last_emotion
             for rect in rects:
@@ -180,7 +225,6 @@ def analyze():
                 ear_avg = (ear(lEye) + ear(rEye)) / 2.0
                 mar_val = mar(mouth)
 
-                # Blink detection
                 if prev_ear > EAR_THRESH and ear_avg <= EAR_THRESH:
                     consec_blink += 1
                 else:
@@ -193,7 +237,6 @@ def analyze():
                 yawn = mar_val > MAR_THRESH
                 drowsy = "Drowsy" if ear_avg < EAR_THRESH or yawn or blink_count > FATIGUE_BLINK_LIMIT else "Alert"
 
-                # Emotion detection (less frequent)
                 if frame_idx % (EMOTION_INTERVAL * 5) == 0:
                     try:
                         res = DeepFace.analyze(frame, actions=['emotion'], enforce_detection=False)
@@ -203,26 +246,49 @@ def analyze():
                     last_emotion = emotion
 
                 driver_state.update({"state": drowsy.lower(), "emotion": emotion.lower()})
-                try:
-                    logging.info("✅Updating server with state: %s, emotion: %s", drowsy.lower(), emotion.lower())
-                    requests.post("http://localhost:8008/update-emotion", json=driver_state)
-                except:
-                    logging.error("❌Failed to update server", exc_info=True)
-                last_analysis_time = time.time()
-                cv2.putText(frame, f"EAR:{ear_avg:.2f} MAR:{mar_val:.2f}", (10,80),
-                            cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255,255,255),2)
+                # Optimized WebSocket - only send on state change or time interval
+                current_time = time.time()
+                state_changed = (driver_state["state"] != last_sent_state["state"] or 
+                               driver_state["emotion"] != last_sent_state["emotion"])
+                
+                if state_changed or (current_time - last_ws_time > WS_INTERVAL):
+                    try:
+                        requests.post("http://localhost:8008/update-emotion", 
+                                    json=driver_state, timeout=0.3)
+                        last_sent_state = driver_state.copy()
+                        last_ws_time = current_time
+                    except:
+                        pass
 
-        # overlay
-        status_color = (0,255,0) if module_alive else (0,0,255)
+                last_analysis_time = time.time()
+                cv2.putText(frame, f"EAR:{ear_avg:.2f} MAR:{mar_val:.2f}", (10, 80),
+                            cv2.FONT_HERSHEY_SIMPLEX, 0.7, (17, 0, 255), 2)
+
+        status_color = (0, 255, 0) if module_alive else (0, 0, 255)
         cv2.putText(frame, f"Status:{'ACTIVE' if module_alive else 'OFFLINE'}",
-                    (10,25), cv2.FONT_HERSHEY_SIMPLEX,0.7,status_color,2)
-        cv2.putText(frame, f"State:{driver_state['state']} | Emotion:{driver_state['emotion']}",
-                    (10,55), cv2.FONT_HERSHEY_SIMPLEX,0.6,(255,255,0),2)
-        cv2.imshow("Vigilance AI – Webcam Monitor", frame)
+                    (10, 25), cv2.FONT_HERSHEY_SIMPLEX, 0.7, status_color, 2)
+        cv2.putText(frame, f"State:{driver_state['state'].upper()} | Emotion:{driver_state['emotion'].upper()}",
+                    (10, 55), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255, 255, 0), 2)
+
+        cv2.imshow("Vigilance AI - Webcam Monitor", frame)
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
+
     cap.release()
     cv2.destroyAllWindows()
+
+
+
+def get_dynamic_response(key: str):
+    res = {
+        "drowsy": ["You seem drowsy. Please take a break.", "You're showing signs of fatigue.", "Consider resting soon."],
+        "alert": ["You are alert and focused.", "Great job staying attentive!", "Keep up the good focus."],
+        "angry": ["You seem angry. Let's take a deep breath.", "Try to stay calm and focused.", "Remember, staying calm is key."],
+        "happy": ["You look happy! Keep that positive energy.", "Glad to see you're in a good mood.", "Stay focused and enjoy the drive."],
+        "sad": ["You seem sad. Remember, it's okay to feel this way.", "I'm here with you. Stay strong.", "Things will get better. Keep going."],
+        "fear": ["You seem fearful. Stay calm and focused.", "Take deep breaths. You're safe.", "Focus on the road ahead."],
+    }
+    return random.choice(res.get(key, ["Drive safely and stay attentive."]))
 
 # ===================== VOICE ASSISTANT (Context-Aware) =====================
 def assistant():
@@ -241,10 +307,10 @@ def assistant():
 
         # Drowsiness alert (20-sec cooldown)
         if state == "drowsy" and now - cooldowns["drowsy"] > 20:
-            speak("You appear drowsy. Please rest.")
+            speak(get_dynamic_response("drowsy"))
             cooldowns["drowsy"] = now
         elif state == "alert" and now - cooldowns["alert"] > 20:
-            speak("You are alert again.")
+            speak(get_dynamic_response("alert"))
             cooldowns["alert"] = now
 
         # Emotion response (30-sec cooldown per emotion)
@@ -252,9 +318,9 @@ def assistant():
             cooldowns["emotion"][emotion] = 0
         if now - cooldowns["emotion"][emotion] > 30 and emotion not in ["unknown", ""]:
             if emotion in ["angry","fear","sad"]:
-                speak("Take a deep breath. Stay calm.")
+                speak(get_dynamic_response(emotion))
             elif emotion == "happy":
-                speak("You seem happy. Stay focused.")
+                speak(get_dynamic_response(emotion))
             cooldowns["emotion"][emotion] = now
 
         time.sleep(5)
@@ -294,7 +360,7 @@ def process_command(cmd):
         speech_queue.put("EXIT")
         return False
     else:
-        speak("I didn't quite get that. Try asking about time, weather, or driver status.")
+        pass
     return True
 
 def commands():

@@ -89,13 +89,18 @@ def carla_simulation():
 
     try:
         while not exit_simulation:
-            world.tick()
+            # Use wait_for_tick() instead of tick() - this prevents flickering
+            world.wait_for_tick()
 
-            # Let spectator follow vehicle
-            transform = vehicle.get_transform()
-            spectator.set_transform(carla.Transform(
-                transform.location + carla.Location(z=3, x=-8),
-                transform.rotation))
+            # Better camera angle - spectator follows vehicle
+            vehicle_transform = vehicle.get_transform()
+            
+            # Position camera behind and above the vehicle
+            spectator_transform = carla.Transform(
+                vehicle_transform.location + carla.Location(z=3) - vehicle_transform.get_forward_vector() * 8.0,
+                vehicle_transform.rotation
+            )
+            spectator.set_transform(spectator_transform)
 
             # Pygame events
             for event in pygame.event.get():
@@ -113,9 +118,7 @@ def carla_simulation():
 
             # Speed calculation
             velocity = vehicle.get_velocity()
-            current_speed = math.sqrt(velocity.x**2 + velocity.y**2 + velocity.z**2) * 3.6
-
-            time.sleep(0.05)
+            current_speed = 3.6 * velocity.length()  # Simpler calculation using length()
 
     finally:
         vehicle.destroy()
