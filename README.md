@@ -23,7 +23,7 @@
 ---
 
 ## Demo Video Link
-[YouTube Video Link](https://youtube.com/watch?v=example)
+[YouTube Video Link](https://youtu.be/xkokWyJB2lw)
 
 ---
 
