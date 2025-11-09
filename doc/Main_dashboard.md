@@ -108,13 +108,15 @@ The Main Dashboard serves as the central command center for VigilanceAI, providi
 - **Local Storage**: User preferences and settings
 - **Error Handling**: Graceful failure management
 
-## Related Documentation
+## Documentation Navigation
 
-- [Wellness Monitor](S2_wellness_monitor.md) - Real-time driver monitoring system
-- [Emergency Protocol](S3_emergency_protocol.md) - Automated safety responses
-- [AI Co-Pilot](S4_Copilot.md) - Conversational AI assistant
-- [API Reference](api_reference.md) - Backend integration and data models
-- [Implementation Guide](implementation.md) - Technical deployment guide
+| Document | Description |
+|----------|-------------|
+| [Wellness Monitor](S2_wellness_monitor.md) | Real-time driver monitoring system |
+| [Emergency Protocol](S3_emergency_protocol.md) | Automated safety responses |
+| [AI Co-Pilot](S4_Copilot.md) | Conversational AI assistant |
+| [API Reference](api_reference.md) | Backend integration and data models |
+| [Implementation Guide](implementation.md) | Technical deployment guide |
 
 ---
 

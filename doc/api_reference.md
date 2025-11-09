@@ -232,12 +232,14 @@ GET /metrics
 - **Availability**: 99.9% uptime target
 - **Throughput**: 10 updates per second
 
-## Related Documentation
+## Documentation Navigation
 
-- [Implementation Guide](implementation.md) - Technical deployment and setup
-- [System Architecture](architecture.md) - Multi-layered system design
-- [Process Flow](process_flow.md) - Monitoring workflow and decision logic
-- [Interface Documentation](README.md#user-interface-documentation) - All UI specifications
+| Document | Description |
+|----------|-------------|
+| [Implementation Guide](implementation.md) | Technical deployment and setup |
+| [System Architecture](architecture.md) | Multi-layered system design |
+| [Process Flow](process_flow.md) | Monitoring workflow and decision logic |
+| [Interface Documentation](README.md#user-interface-documentation) | All UI specifications |
 
 ---
 

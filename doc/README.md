@@ -78,22 +78,19 @@ VigilanceAI is available on two platforms:
 - Vehicle securement protocol with controlled braking
 - Automated eCall with GPS location and event data
 
-## Related Resources
+## Documentation Navigation
 
-### Project Documentation
-- [Main Project README](../README.md) - Project overview and team information
-- [Implementation Guide](implementation.md) - Technical deployment and setup
-- [API Reference](api_reference.md) - Backend endpoints and data models
-
-### Interface Documentation
-- [Main Dashboard](Main_dashboard.md) - Primary interface specifications
-- [Wellness Monitor](S2_wellness_monitor.md) - Real-time monitoring system
-- [Emergency Protocol](S3_emergency_protocol.md) - Automated safety responses
-- [AI Co-Pilot](S4_Copilot.md) - Conversational assistant interface
-
-### Source Code
-- [Frontend Source](../src/frontend/) - React web application and Flutter mobile app
-- [Backend Source](../src/carla/) - Python backend with CARLA integration
+| Category | Document | Description |
+|----------|----------|-------------|
+| **Project** | [Main Project README](../README.md) | Project overview and team information |
+| **Technical** | [Implementation Guide](implementation.md) | Technical deployment and setup |
+| **Technical** | [API Reference](api_reference.md) | Backend endpoints and data models |
+| **Interface** | [Main Dashboard](Main_dashboard.md) | Primary interface specifications |
+| **Interface** | [Wellness Monitor](S2_wellness_monitor.md) | Real-time monitoring system |
+| **Interface** | [Emergency Protocol](S3_emergency_protocol.md) | Automated safety responses |
+| **Interface** | [AI Co-Pilot](S4_Copilot.md) | Conversational assistant interface |
+| **Source** | [Frontend Source](../src/frontend/) | React web application |
+| **Source** | [Backend Source](../src/carla/) | Python backend with CARLA integration |
 
 ---
 

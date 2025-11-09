@@ -75,12 +75,14 @@ VigilanceAI implements a sophisticated multi-layered architecture that combines 
 - **High Availability**: 99.9% uptime with failover mechanisms
 - **Modular Design**: Scalable component architecture
 
-## Related Documentation
+## Documentation Navigation
 
-- [Process Flow](process_flow.md) - Detailed monitoring and intervention workflow
-- [Implementation Guide](implementation.md) - Technical specifications and deployment
-- [API Reference](api_reference.md) - Backend integration and data models
-- [Main Dashboard](Main_dashboard.md) - Primary interface implementation
+| Document | Description |
+|----------|-------------|
+| [Process Flow](process_flow.md) | Detailed monitoring and intervention workflow |
+| [Implementation Guide](implementation.md) | Technical specifications and deployment |
+| [API Reference](api_reference.md) | Backend integration and data models |
+| [Main Dashboard](Main_dashboard.md) | Primary interface implementation |
 
 ---
 

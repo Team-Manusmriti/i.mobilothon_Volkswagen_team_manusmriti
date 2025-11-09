@@ -175,13 +175,15 @@ The Emergency Protocol System provides comprehensive automated safety responses 
 - **Privacy Protection**: Data handling standards
 - **International Standards**: Global deployment readiness
 
-## Related Documentation
+## Documentation Navigation
 
-- [Wellness Monitor](S2_wellness_monitor.md) - Driver monitoring and risk detection
-- [AI Co-Pilot](S4_Copilot.md) - Conversational intervention before emergencies
-- [Process Flow](process_flow.md) - Emergency detection and response workflow
-- [System Architecture](architecture.md) - Safety system integration
-- [Implementation Guide](implementation.md) - eCall and safety protocol setup
+| Document | Description |
+|----------|-------------|
+| [Wellness Monitor](S2_wellness_monitor.md) | Driver monitoring and risk detection |
+| [AI Co-Pilot](S4_Copilot.md) | Conversational intervention before emergencies |
+| [Process Flow](process_flow.md) | Emergency detection and response workflow |
+| [System Architecture](architecture.md) | Safety system integration |
+| [Implementation Guide](implementation.md) | eCall and safety protocol setup |
 
 ---
 

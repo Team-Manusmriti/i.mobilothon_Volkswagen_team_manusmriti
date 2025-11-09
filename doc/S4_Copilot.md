@@ -160,13 +160,15 @@ AI: "Perfect! I'm updating your route now and starting your relaxation playlist.
 - **Accountability**: Human oversight and control
 - **Beneficence**: Driver safety and wellness priority
 
-## Related Documentation
+## Documentation Navigation
 
-- [Wellness Monitor](S2_wellness_monitor.md) - Driver state detection and analysis
-- [Main Dashboard](Main_dashboard.md) - AI co-pilot integration interface
-- [Emergency Protocol](S3_emergency_protocol.md) - Critical situation escalation
-- [Process Flow](process_flow.md) - Proactive intervention workflow
-- [API Reference](api_reference.md) - Conversational AI backend integration
+| Document | Description |
+|----------|-------------|
+| [Wellness Monitor](S2_wellness_monitor.md) | Driver state detection and analysis |
+| [Main Dashboard](Main_dashboard.md) | AI co-pilot integration interface |
+| [Emergency Protocol](S3_emergency_protocol.md) | Critical situation escalation |
+| [Process Flow](process_flow.md) | Proactive intervention workflow |
+| [API Reference](api_reference.md) | Conversational AI backend integration |
 
 ---
 

@@ -200,15 +200,17 @@ npm run preview
 - **Error Handling**: Graceful failure management
 - **Audit Logging**: Security event tracking
 
-## Related Documentation
+## Documentation Navigation
 
-- [System Architecture](architecture.md) - Multi-layered system design
-- [Process Flow](process_flow.md) - Monitoring and intervention workflow
-- [API Reference](api_reference.md) - Backend integration specifications
-- [Main Dashboard](Main_dashboard.md) - Primary interface design
-- [Wellness Monitor](S2_wellness_monitor.md) - Real-time monitoring capabilities
-- [Emergency Protocol](S3_emergency_protocol.md) - Automated safety responses
-- [AI Co-Pilot](S4_Copilot.md) - Conversational AI assistant
+| Document | Description |
+|----------|-------------|
+| [System Architecture](architecture.md) | Multi-layered system design |
+| [Process Flow](process_flow.md) | Monitoring and intervention workflow |
+| [API Reference](api_reference.md) | Backend integration specifications |
+| [Main Dashboard](Main_dashboard.md) | Primary interface design |
+| [Wellness Monitor](S2_wellness_monitor.md) | Real-time monitoring capabilities |
+| [Emergency Protocol](S3_emergency_protocol.md) | Automated safety responses |
+| [AI Co-Pilot](S4_Copilot.md) | Conversational AI assistant |
 
 ---
 

@@ -121,13 +121,15 @@ Driver Monitoring
 4. **Emergency Communication**: eCall with GPS data
 5. **Medical Response**: First responder notification
 
-## Related Documentation
+## Documentation Navigation
 
-- [System Architecture](architecture.md) - Multi-layered system design and components
-- [Implementation Guide](implementation.md) - Technical deployment specifications
-- [Emergency Protocol](S3_emergency_protocol.md) - Automated safety response system
-- [Wellness Monitor](S2_wellness_monitor.md) - Real-time driver monitoring
-- [AI Co-Pilot](S4_Copilot.md) - Conversational intervention system
+| Document | Description |
+|----------|-------------|
+| [System Architecture](architecture.md) | Multi-layered system design and components |
+| [Implementation Guide](implementation.md) | Technical deployment specifications |
+| [Emergency Protocol](S3_emergency_protocol.md) | Automated safety response system |
+| [Wellness Monitor](S2_wellness_monitor.md) | Real-time driver monitoring |
+| [AI Co-Pilot](S4_Copilot.md) | Conversational intervention system |
 
 ---
 

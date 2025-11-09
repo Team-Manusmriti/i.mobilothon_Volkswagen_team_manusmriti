@@ -127,13 +127,15 @@ The Wellness Monitor provides comprehensive real-time analysis of driver state t
 - **Medical Privacy**: HIPAA-equivalent protections
 - **Data Anonymization**: Personal identifier removal
 
-## Related Documentation
+## Documentation Navigation
 
-- [Main Dashboard](Main_dashboard.md) - Primary interface and wellness scoring
-- [Emergency Protocol](S3_emergency_protocol.md) - Critical event response system
-- [AI Co-Pilot](S4_Copilot.md) - Proactive intervention strategies
-- [Process Flow](process_flow.md) - Monitoring workflow and decision logic
-- [API Reference](api_reference.md) - Real-time data streaming specifications
+| Document | Description |
+|----------|-------------|
+| [Main Dashboard](Main_dashboard.md) | Primary interface and wellness scoring |
+| [Emergency Protocol](S3_emergency_protocol.md) | Critical event response system |
+| [AI Co-Pilot](S4_Copilot.md) | Proactive intervention strategies |
+| [Process Flow](process_flow.md) | Monitoring workflow and decision logic |
+| [API Reference](api_reference.md) | Real-time data streaming specifications |
 
 ---
 
