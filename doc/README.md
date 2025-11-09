@@ -94,7 +94,6 @@ VigilanceAI is available on two platforms:
 ### Source Code
 - [Frontend Source](../src/frontend/) - React web application and Flutter mobile app
 - [Backend Source](../src/carla/) - Python backend with CARLA integration
-- [Demo Video](https://youtube.com/watch?v=example) - Live system demonstration
 
 ---
 
