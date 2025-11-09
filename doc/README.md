@@ -9,16 +9,24 @@ VigilanceAI is an intelligent co-pilot that shifts from reactive alerts to proac
 ## Documentation Structure
 
 ### Core System Documentation
-- **[architecture.md](architecture.md)** - Multi-layered system architecture with AI fusion engine
-- **[process_flow.md](process_flow.md)** - Proactive monitoring and intervention workflow
-- **[implementation.md](implementation.md)** - Technical implementation details and deployment guide
-- **[api_reference.md](api_reference.md)** - Backend API endpoints and WebSocket specifications
+
+| Component | Description | Document |
+|----------|-------------|-------------|
+| Architecture | Multi-layered system architecture with AI fusion engine | [Architecture.md](Architecture.md) |
+| Process Flow | Proactive monitoring and intervention workflow | [Process_flow.md](Process_flow.md) |
+| Implementation | Technical implementation details and deployment guide | [Implementation.md](Implementation.md) |
+| API Reference | Backend API endpoints and WebSocket specifications | [API_reference.md](API_reference.md) |
+
 
 ### User Interface Documentation
-- **[Main_dashboard.md](Main_dashboard.md)** - Primary dashboard with wellness scoring and vehicle status
-- **[S2_wellness_monitor.md](S2_wellness_monitor.md)** - Real-time driver monitoring with PERCLOS and emotion recognition
-- **[S3_emergency_protocol.md](S3_emergency_protocol.md)** - Automated emergency response and eCall system
-- **[S4_Copilot.md](S4_Copilot.md)** - Conversational AI co-pilot with context-aware interventions
+
+| Component | Description | Document |
+|----------|-------------|-------------|
+| Main Dashboard | Primary dashboard with wellness scoring and vehicle status | [Main_dashboard.md](Main_dashboard.md) |
+| Wellness Monitor | Real-time driver monitoring with PERCLOS and emotion recognition | [S2_wellness_monitor.md](S2_wellness_monitor.md) |
+| Emergency Protocol | Automated emergency response and eCall system | [S3_emergency_protocol.md](S3_emergency_protocol.md) |
+| AI Co-Pilot | Conversational AI co-pilot with context-aware interventions | [S4_Copilot.md](S4_Copilot.md) |
+
 
 ## Platform Availability
 
@@ -51,10 +59,6 @@ VigilanceAI is available on two platforms:
 | **Process Flow** | Proactive monitoring and intervention logic | [View](process_flow.md) |
 | **Implementation** | Deployment guide and technical specifications | [View](implementation.md) |
 | **API Reference** | Backend endpoints and data models | [View](api_reference.md) |
-| **Main Dashboard** | Primary interface with wellness scoring | [View](Main_dashboard.md) |
-| **Wellness Monitor** | Real-time driver state tracking | [View](S2_wellness_monitor.md) |
-| **Emergency Protocol** | Automated safety response system | [View](S3_emergency_protocol.md) |
-| **AI Co-Pilot** | Conversational assistant interface | [View](S4_Copilot.md) |
 
 ## Core Features
 
@@ -80,17 +84,18 @@ VigilanceAI is available on two platforms:
 
 ## Documentation Navigation
 
-| Category | Document | Description |
+| Category | Description | Document |
 |----------|----------|-------------|
-| **Project** | [Main Project README](../README.md) | Project overview and team information |
-| **Technical** | [Implementation Guide](implementation.md) | Technical deployment and setup |
-| **Technical** | [API Reference](api_reference.md) | Backend endpoints and data models |
-| **Interface** | [Main Dashboard](Main_dashboard.md) | Primary interface specifications |
-| **Interface** | [Wellness Monitor](S2_wellness_monitor.md) | Real-time monitoring system |
-| **Interface** | [Emergency Protocol](S3_emergency_protocol.md) | Automated safety responses |
-| **Interface** | [AI Co-Pilot](S4_Copilot.md) | Conversational assistant interface |
-| **Source** | [Frontend Source](../src/frontend/) | React web application |
-| **Source** | [Backend Source](../src/carla/) | Python backend with CARLA integration |
+| **Project** | Project overview and team information | [Main Project README](../README.md) |
+| **Technical** | Technical deployment and setup | [Implementation Guide](implementation.md) |
+| **Technical** | Backend endpoints and data models | [API Reference](api_reference.md) |
+| **Interface** | Primary interface specifications | [Main Dashboard](Main_dashboard.md) |
+| **Interface** | Real-time monitoring system | [Wellness Monitor](S2_wellness_monitor.md) |
+| **Interface** | Automated safety responses | [Emergency Protocol](S3_emergency_protocol.md) |
+| **Interface** | Conversational assistant interface | [AI Co-Pilot](S4_Copilot.md) |
+| **Source** | React web application | [Frontend Source](../src/frontend/website) |
+| **Source** | Kotlin mobile application | [App Source](../src/frontend/app) |
+| **Source** | Python backend with CARLA integration | [Backend Source](../src/carla/) |
 
 ---
 
