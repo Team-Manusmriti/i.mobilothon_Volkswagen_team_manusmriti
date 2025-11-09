@@ -1,44 +1,86 @@
-# Core Backend Framework
-fastapi
-uvicorn[standard]
-websockets
-python-multipart
-pydantic
-
-# CARLA Simulator
+absl-py
+astunparse
+attrs
+beautifulsoup4
+blinker
 carla
-
-# Computer Vision & ML
-opencv-python
+certifi
+cffi
+charset-normalizer
+click
+colorama
+comtypes
+contourpy
+cycler
+deepface
+dlib
+filelock
+fire
+Flask
+flask-cors
+flatbuffers
+fonttools
+gast
+gdown
+google-pasta
+grpcio
+gunicorn
+h5py
+idna
+imutils
+itsdangerous
+jax
+jaxlib
+Jinja2
+joblib
+keras
+kiwisolver
+libclang
+lz4
+Markdown
+markdown-it-py
+MarkupSafe
+matplotlib
+mdurl
+mediapipe
+ml_dtypes
+mtcnn
+namex
 numpy
-scipy
-scikit-learn
-protobuf==3.20.3
-
-# Deep Learning (optional, for advanced driver monitoring)
-torch
-torchvision
-# tensorflow==2.15.0  # Uncomment if using TensorFlow models
-
-# Face & Emotion Recognition (optional)
-# dlib
-# face-recognition
-# fer
-
-# Data Processing
+opencv-contrib-python
+opencv-python
+opt_einsum
+optree
+packaging
 pandas
 pillow
-
-# Utilities
-python-dotenv
-pyyaml
-aiofiles
-
-# Logging & Monitoring
-loguru
-prometheus-client
-
-# Testing (optional)
-pytest
-pytest-asyncio
-httpx
+protobuf
+PyAudio
+pycparser
+Pygments
+pyparsing
+PySocks
+python-dateutil
+pyttsx3
+pytz
+pywin32
+requests
+retina-face
+rich
+scipy
+six
+sounddevice
+soupsieve
+SpeechRecognition
+tensorboard
+tensorboard-data-server
+tensorflow
+tensorflow-io-gcs-filesystem
+termcolor
+tf_keras
+tqdm
+typing_extensions
+tzdata
+urllib3
+Werkzeug
+wrapt

@@ -43,6 +43,8 @@
 
 VigilanceAI is an intelligent co-pilot engineered to redefine road safety by prioritizing the driver's overall well-being. Unlike conventional systems that react only when danger is imminent, VigilanceAI takes a proactive approach. It leverages multi-modal AI to integrate cabin video analytics—monitoring signs of drowsiness, stress, and medical distress—with real-time vehicle dynamics such as driving patterns and erratic behavior.
 
+VigilanceAI redefines driver safety by replacing reactive alerts with proactive, emotionally aware intelligence. It creates a closed-loop system that not only detects risk but actively supports and protects the driver throughout the journey.
+
 ---
 
 ## Key Features
@@ -102,4 +104,29 @@ VigilanceAI is an intelligent co-pilot engineered to redefine road safety by pri
   
 ---
 
-## Made with 💗 for Volkswagen - i.mobilothon-5.0 
+## Platform Availability
+
+VigilanceAI is available on two platforms:
+- **Web Application**: React-based dashboard optimized for in-vehicle displays
+- **Mobile Application**: Flutter companion app for smartphones
+
+## Highlights of Our System
+
+### AI Fusion Driver Model
+Combines cabin video analytics with real-time vehicle behavior for multi-dimensional insight into driver wellness and vehicle state.
+
+### Fatigue & Stress Detection
+Identifies early signs of drowsiness and emotional distress, offering proactive nudges to prevent microsleeps or cognitive overload.
+
+### Context-Aware Support
+Conversational co-pilot suggests reroutes, calming music, or breaks based on real-time conditions and personal preferences.
+
+### Emergency Event Detection
+Goes beyond inactivity checks to detect medical distress, collisions, and loss of control with automated safety protocols.
+
+### Automated Safety Protocols
+Secures the vehicle and contacts emergency services during critical incidents with precise GPS location and event data.
+
+---
+
+## Made with ❤️ for Volkswagen - i.mobilothon-5.0 
