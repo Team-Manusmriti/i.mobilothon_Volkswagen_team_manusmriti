@@ -99,3 +99,4 @@ VigilanceAI is available on two platforms:
 ---
 
 *Part of VigilanceAI - Built with ❤️ for Volkswagen - i.mobilothon-5.0*
+---

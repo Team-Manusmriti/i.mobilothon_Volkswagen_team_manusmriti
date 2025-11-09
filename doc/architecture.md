@@ -85,3 +85,4 @@ VigilanceAI implements a sophisticated multi-layered architecture that combines 
 ---
 
 *Part of VigilanceAI - Built with ❤️ for Volkswagen - i.mobilothon-5.0*
+---

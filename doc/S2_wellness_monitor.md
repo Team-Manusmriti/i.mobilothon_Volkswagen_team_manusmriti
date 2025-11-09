@@ -138,3 +138,4 @@ The Wellness Monitor provides comprehensive real-time analysis of driver state t
 ---
 
 *Part of VigilanceAI - Built with ❤️ for Volkswagen - i.mobilothon-5.0*
+---

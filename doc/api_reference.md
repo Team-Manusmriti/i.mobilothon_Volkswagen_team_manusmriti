@@ -242,3 +242,4 @@ GET /metrics
 ---
 
 *Part of VigilanceAI - Built with ❤️ for Volkswagen - i.mobilothon-5.0*
+---

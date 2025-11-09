@@ -119,3 +119,4 @@ The Main Dashboard serves as the central command center for VigilanceAI, providi
 ---
 
 *Part of VigilanceAI - Built with ❤️ for Volkswagen - i.mobilothon-5.0*
+---
