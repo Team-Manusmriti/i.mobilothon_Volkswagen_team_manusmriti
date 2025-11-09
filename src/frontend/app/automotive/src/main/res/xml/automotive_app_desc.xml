@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+   automotive_app_desc.xml
+   Android Automotive OS and Android Auto application descriptor
+
+   This file declares that VigilanceAI is compatible with automotive systems:
+   - Android Automotive OS (built-in car systems)
+   - Android Auto (phone projection to car display)
+
+   Location: app/src/main/res/xml/automotive_app_desc.xml
+-->
+<automotiveApp>
+    <!--
+        For VigilanceAI - Driver Wellness & Safety Monitoring App
+
+        This app provides:
+        - Real-time driver wellness monitoring
+        - Fatigue detection (PERCLOS)
+        - Heart rate monitoring
+        - Facial emotion recognition
+        - Emergency response protocols
+        - AI-powered co-pilot assistance
+    -->
+
+    <!--
+        Declare automotive features this app uses
+
+        Available features:
+        - "notification" - Send notifications to the driver
+        - "template" - Use Car App Library templates (for Android Auto)
+        - "media" - Media playback (not used by VigilanceAI)
+        - "navigation" - Navigation features (not primary for VigilanceAI)
+    -->
+    <uses name="notification"/>
+    <uses name="template"/>
+
+    <!--
+        Note: VigilanceAI is primarily a monitoring and safety app
+        It uses notifications to alert drivers about:
+        - Fatigue warnings
+        - Health alerts
+        - Break suggestions
+        - Emergency notifications
+    -->
+</automotiveApp>
+
+    <!--
+        IMPORTANT NOTES FOR AUTOMOTIVE INTEGRATION:
+
+        1. AndroidManifest.xml Configuration:
+           Add this meta-data tag in your <application> section:
+
+           <meta-data
+               android:name="com.google.android.gms.car.application"
+               android:resource="@xml/automotive_app_desc" />
+
+        2. Android Auto Support (Optional):
+           If you want full Android Auto support, add:
+
+           <service
+               android:name=".CarAppService"
+               android:exported="true">
+               <intent-filter>
+                   <action android:name="androidx.car.app.CarAppService" />
+               </intent-filter>
+           </service>
+
+        3. Required Permissions:
+           Ensure these are in AndroidManifest.xml:
+           - android.permission.FOREGROUND_SERVICE (for continuous monitoring)
+           - android.permission.POST_NOTIFICATIONS (for alerts)
+
+        4. Automotive Features to Consider:
+           - Voice commands integration
+           - Distraction optimization (minimal interaction while driving)
+           - Large touch targets (easier to tap while driving)
+           - High contrast UI (readable in various lighting)
+           - Landscape orientation (car displays)
+
+        5. Testing:
+           - Test on Android Automotive emulator
+           - Test with Android Auto Desktop Head Unit (DHU)
+           - Verify app appears in car launcher
+           - Test notifications display correctly on car screen
+    -->

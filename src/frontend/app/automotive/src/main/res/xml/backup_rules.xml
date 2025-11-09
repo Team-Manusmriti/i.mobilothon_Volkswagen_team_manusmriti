@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+   backup_rules.xml
+   Defines backup and restore rules for Android devices running API 31+
+
+   This file specifies what data should be backed up to Google Drive or other
+   backup services when users enable backup in their Android settings.
+
+   Location: app/src/main/res/xml/backup_rules.xml
+-->
+<full-backup-content>
+    <!--
+        Include rules: Specify what to backup
+        By default, almost all app data is backed up except for a few system files
+    -->
+
+    <!-- Include app preferences/settings -->
+    <include domain="sharedpref" path="."/>
+
+    <!-- Include internal storage files -->
+    <include domain="file" path="."/>
+
+    <!-- Include database files -->
+    <include domain="database" path="."/>
+
+    <!--
+        Exclude rules: Specify what NOT to backup
+        Use these for sensitive data, temporary files, or large files
+    -->
+
+    <!-- Exclude device-specific files -->
+    <exclude domain="sharedpref" path="device.xml"/>
+
+    <!-- Exclude temporary cache files -->
+    <exclude domain="file" path="cache"/>
+
+    <!-- Exclude large media files (optional - uncomment if needed) -->
+    <!-- <exclude domain="file" path="images"/> -->
+    <!-- <exclude domain="file" path="videos"/> -->
+
+    <!-- Exclude sensitive data (tokens, keys, etc.) -->
+    <exclude domain="sharedpref" path="auth_tokens.xml"/>
+    <exclude domain="database" path="secure.db"/>
+
+    <!-- VigilanceAI Specific Exclusions -->
+    <!-- Exclude temporary sensor data -->
+    <exclude domain="database" path="temp_sensors.db"/>
+
+    <!-- Exclude log files -->
+    <exclude domain="file" path="logs/"/>
+
+    <!-- Exclude session data -->
+    <exclude domain="sharedpref" path="session_data.xml"/>
+
+    <!-- Exclude real-time monitoring cache -->
+    <exclude domain="file" path="sensor_cache/"/>
+
+    <!-- Exclude device calibration data -->
+    <exclude domain="sharedpref" path="device_calibration.xml"/>
+
+    <!-- External storage exclusions handled by system defaults -->
+
+    <!--
+        Notes:
+        - domain="sharedpref" = SharedPreferences files
+        - domain="database" = SQLite databases
+        - domain="file" = Internal storage files
+        - domain="external" = External storage files
+        - path="." means all files in that domain
+    -->
+</full-backup-content>

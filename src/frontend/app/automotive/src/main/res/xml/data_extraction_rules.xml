@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+   data_extraction_rules.xml
+   Defines data extraction rules for Android 12 (API 31) and above
+
+   This file controls what data can be extracted during cloud backups and
+   device-to-device transfers. It provides more granular control than backup_rules.xml
+
+   Location: app/src/main/res/xml/data_extraction_rules.xml
+-->
+<data-extraction-rules>
+    <!--
+        Cloud Backup Rules
+        Controls what data is backed up to Google Drive or other cloud services
+    -->
+    <cloud-backup>
+        <!-- Include app settings and preferences -->
+        <include domain="sharedpref" path="."/>
+
+        <!-- Include user data files -->
+        <include domain="file" path="."/>
+
+        <!-- Include app databases -->
+        <include domain="database" path="."/>
+
+        <!-- Exclude sensitive authentication data -->
+        <exclude domain="sharedpref" path="auth_tokens.xml"/>
+        <exclude domain="sharedpref" path="user_credentials.xml"/>
+
+        <!-- Exclude temporary files and caches -->
+        <exclude domain="file" path="cache/"/>
+        <exclude domain="file" path="temp/"/>
+
+        <!-- Exclude device-specific configuration -->
+        <exclude domain="sharedpref" path="device_config.xml"/>
+
+        <!-- Exclude secure databases with sensitive info -->
+        <exclude domain="database" path="secure.db"/>
+        <exclude domain="database" path="encryption_keys.db"/>
+
+        <!-- VigilanceAI Specific Exclusions - Cloud Backup -->
+        <!-- Exclude temporary sensor readings -->
+        <exclude domain="database" path="temp_sensors.db"/>
+        <exclude domain="database" path="realtime_metrics.db"/>
+
+        <!-- Exclude log files -->
+        <exclude domain="file" path="logs/"/>
+
+        <!-- Exclude session data -->
+        <exclude domain="sharedpref" path="session_data.xml"/>
+
+        <!-- Exclude sensor cache -->
+        <exclude domain="file" path="sensor_cache/"/>
+
+        <!-- Exclude active monitoring state -->
+        <exclude domain="sharedpref" path="active_session.xml"/>
+    </cloud-backup>
+
+    <!--
+        Device Transfer Rules
+        Controls what data is transferred during device-to-device setup
+        (e.g., when user gets a new phone and transfers data)
+    -->
+    <device-transfer>
+        <!-- Include all user settings -->
+        <include domain="sharedpref" path="."/>
+
+        <!-- Include user data files -->
+        <include domain="file" path="."/>
+
+        <!-- Include databases -->
+        <include domain="database" path="."/>
+
+        <!-- Exclude authentication tokens (user should re-login) -->
+        <exclude domain="sharedpref" path="auth_tokens.xml"/>
+
+        <!-- Exclude device-specific data -->
+        <exclude domain="sharedpref" path="device_id.xml"/>
+        <exclude domain="sharedpref" path="hardware_config.xml"/>
+
+        <!-- Exclude temporary caches -->
+        <exclude domain="file" path="cache/"/>
+
+        <!-- Exclude session data (should be regenerated on new device) -->
+        <exclude domain="database" path="sessions.db"/>
+    </device-transfer>
+
+    <!--
+        Notes:
+
+        Domains:
+        - sharedpref: SharedPreferences XML files
+        - database: SQLite database files
+        - file: Internal storage files
+        - external: External storage files (SD card)
+        - root: App's root directory
+
+        Best Practices:
+        1. Always exclude authentication tokens and passwords
+        2. Exclude device-specific configuration
+        3. Exclude temporary files and caches
+        4. Include user preferences and settings
+        5. Include user-created content and data
+
+        For VigilanceAI:
+        - Back up user preferences and settings
+        - Back up trip history and wellness data
+        - Exclude temporary sensor data
+        - Exclude device-specific calibration
+        - Exclude active session tokens
+    -->
+</data-extraction-rules>

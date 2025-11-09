@@ -1,0 +1,18 @@
+<resources>
+<string name="app_name">VigilanceAI</string>
+<string name="active_monitoring">Active Monitoring</string>
+<string name="system_active">System Active</string>
+<string name="vehicle_connected">Vehicle: Connected</string>
+
+<!-- Wellness -->
+<string name="driver_wellness">Driver Wellness</string>
+<string name="optimal_condition">Optimal Condition</string>
+
+<!-- Emergency -->
+<string name="emergency_protocol">Emergency Protocol</string>
+<string name="automated_response">Automated Response System</string>
+
+<!-- AI Co-Pilot -->
+<string name="ai_copilot">AI Co-Pilot</string>
+<string name="conversational_assistant">Conversational Assistant</string>
+</resources>
