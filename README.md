@@ -29,6 +29,7 @@
 
 ## Live Website: [VigilanceAI](https://team-manusmriti.github.io/i.mobilothon_Volkswagen_team_manusmriti-frontend/)
 
+>**Note: The live website is not fully functional as it requires backend integration with CARLA simulator which incur high computational resources and cannot be hosted on free platforms. The live site showcases the frontend interface and design. For full functionality, please refer to the local setup instructions in the documentation.**
 
 # Project Artefacts
 
