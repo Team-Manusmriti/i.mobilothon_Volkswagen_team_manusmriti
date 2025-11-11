@@ -6,8 +6,6 @@ Comprehensive technical documentation for VigilanceAI - an AI-Enhanced Driver We
 
 VigilanceAI is an intelligent co-pilot that shifts from reactive alerts to proactive, emotionally aware intelligence. It creates a closed-loop system that detects risk and actively supports drivers throughout their journey using multi-modal AI fusion.
 
-## Live Website: [VigilanceAI Dashboard](https://team-manusmriti.github.io/i.mobilothon_Volkswagen_team_manusmriti-frontend/)
-
 ## Documentation Structure
 
 ### Core System Documentation
