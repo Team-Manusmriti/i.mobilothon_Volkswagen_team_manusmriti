@@ -331,12 +331,6 @@ pip install -r requirements.txt
 wget https://github.com/davisking/dlib-models/raw/master/shape_predictor_68_face_landmarks.dat.bz2
 ```
 
-**Performance Issues**:
-```python
-# Reduce processing load
-EMOTION_INTERVAL = 60  # Increase interval
-FRAME_SKIP = 2  # Process every 2nd frame
-```
 
 ## Automated Testing
 
@@ -369,34 +363,6 @@ pip install pytest coverage
 coverage run -m pytest tests/
 coverage report
 coverage html
-```
-
-## Performance Testing
-
-### Load Testing
-```bash
-# Test WebSocket connections
-python scripts/load_test_websocket.py --connections 10
-
-# Monitor resource usage
-python scripts/monitor_performance.py --duration 300
-```
-
-### Stress Testing
-```bash
-# High-frequency data processing
-python test_stress.py --fps 60 --duration 600
-
-# Memory leak detection  
-python test_memory.py --iterations 1000
-```
-
-## Test Reports
-
-### Generate Test Report
-```bash
-# Run all tests and generate report
-python scripts/run_all_tests.py --output test_report.html
 ```
 
 **Report Includes**:

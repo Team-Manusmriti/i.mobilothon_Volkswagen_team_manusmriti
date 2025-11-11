@@ -156,22 +156,6 @@ mv shape_predictor_68_face_landmarks.dat src/carla/models/
 - Frontend (5173): Change in `vite.config.js`
 - CARLA (2000): Start with `-rpc-port=2001`
 
-### Performance Optimization
-
-#### For Low-End Systems
-```python
-# Reduce processing frequency
-EMOTION_INTERVAL = 60  # Increase from 30
-FRAME_SKIP = 2  # Process every 2nd frame
-```
-
-#### For High-End Systems
-```python
-# Enable GPU acceleration
-USE_GPU = True
-BATCH_SIZE = 4
-PARALLEL_PROCESSING = True
-```
 
 ## Development Setup
 
