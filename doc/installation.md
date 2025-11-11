@@ -61,13 +61,6 @@ cd src/frontend/website
 npm install
 ```
 
-#### Environment Configuration
-Create `.env` file in `src/frontend/website/`:
-```env
-VITE_API_URL=http://localhost:8000
-VITE_WS_URL=ws://localhost:8000
-```
-
 ### 4. Mobile App Setup (Android)
 
 #### Prerequisites
