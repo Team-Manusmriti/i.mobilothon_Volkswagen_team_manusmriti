@@ -6,26 +6,29 @@ Comprehensive technical documentation for VigilanceAI - an AI-Enhanced Driver We
 
 VigilanceAI is an intelligent co-pilot that shifts from reactive alerts to proactive, emotionally aware intelligence. It creates a closed-loop system that detects risk and actively supports drivers throughout their journey using multi-modal AI fusion.
 
+## Live Website: [VigilanceAI Dashboard](https://team-manusmriti.github.io/i.mobilothon_Volkswagen_team_manusmriti-frontend/)
+
 ## Documentation Structure
 
 ### Core System Documentation
 
 | Component | Description | Document |
 |----------|-------------|-------------|
-| Architecture | Multi-layered system architecture with AI fusion engine | [Architecture.md](Architecture.md) |
-| Process Flow | Proactive monitoring and intervention workflow | [Process_flow.md](Process_flow.md) |
-| Implementation | Technical implementation details and deployment guide | [Implementation.md](Implementation.md) |
-| API Reference | Backend API endpoints and WebSocket specifications | [API_reference.md](API_reference.md) |
+| **Setup & Testing** | Complete installation and testing guide | [Installation Guide](installation.md) \| [Testing Guide](testing.md) |
+| **Architecture** | Multi-layered system architecture with AI fusion engine | [Architecture.md](architecture.md) |
+| **Process Flow** | Proactive monitoring and intervention workflow | [Process_flow.md](process_flow.md) |
+| **Implementation** | Technical implementation details and deployment guide | [Implementation.md](implementation.md) |
+| **API Reference** | Backend API endpoints and WebSocket specifications | [API_reference.md](api_reference.md) |
 
 
 ### User Interface Documentation
 
 | Component | Description | Document |
 |----------|-------------|-------------|
-| Main Dashboard | Primary dashboard with wellness scoring and vehicle status | [Main_dashboard.md](Main_dashboard.md) |
-| Wellness Monitor | Real-time driver monitoring with PERCLOS and emotion recognition | [S2_wellness_monitor.md](S2_wellness_monitor.md) |
-| Emergency Protocol | Automated emergency response and eCall system | [S3_emergency_protocol.md](S3_emergency_protocol.md) |
-| AI Co-Pilot | Conversational AI co-pilot with context-aware interventions | [S4_Copilot.md](S4_Copilot.md) |
+| **Main Dashboard** | Primary dashboard with wellness scoring and vehicle status | [Main_dashboard.md](Main_dashboard.md) |
+| **Wellness Monitor** | Real-time driver monitoring with PERCLOS and emotion recognition | [S2_wellness_monitor.md](S2_wellness_monitor.md) |
+| **Emergency Protocol** | Automated emergency response and eCall system | [S3_emergency_protocol.md](S3_emergency_protocol.md) |
+| **AI Co-Pilot** | Conversational AI co-pilot with context-aware interventions | [S4_Copilot.md](S4_Copilot.md) |
 
 
 ## Platform Availability
@@ -87,6 +90,8 @@ VigilanceAI is available on two platforms:
 | Category | Description | Document |
 |----------|----------|-------------|
 | **Project** | Project overview and team information | [Main Project README](../README.md) |
+| **Setup** | Complete installation and setup guide | [Installation Guide](installation.md) |
+| **Testing** | Testing procedures and script documentation | [Testing Guide](testing.md) |
 | **Technical** | Technical deployment and setup | [Implementation Guide](implementation.md) |
 | **Technical** | Backend endpoints and data models | [API Reference](api_reference.md) |
 | **Interface** | Primary interface specifications | [Main Dashboard](Main_dashboard.md) |

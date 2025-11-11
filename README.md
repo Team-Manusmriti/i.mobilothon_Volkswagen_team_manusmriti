@@ -33,6 +33,10 @@
 [Technical Docs](doc/README.md)  
 *All technical details are documented in markdown files, including system architecture, implementation details, performance metrics, and deployment instructions.*
 
+## Quick Start
+[Installation Guide](doc/installation.md) | [Testing Guide](doc/testing.md)  
+*Complete setup instructions and testing procedures for all system components.*
+
 ## Source Code
 [Source Code](src/)  
 *Complete application source code including React frontend, Python backend, and CARLA simulation modules with all dependencies and build configurations.*
