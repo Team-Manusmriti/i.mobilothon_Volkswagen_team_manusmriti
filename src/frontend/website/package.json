@@ -1,4 +1,5 @@
 {
+  "homepage": "https://team-manusmriti.github.io/i.mobilothon_Volkswagen_team_manusmriti/",
   "name": "vigilance-ai",
   "version": "1.0.0",
   "description": "AI-powered vehicle monitoring system for car displays",
@@ -7,6 +8,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "lint": "eslint src --ext js,jsx"
   },
   "dependencies": {
