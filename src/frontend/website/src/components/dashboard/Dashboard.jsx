@@ -8,42 +8,82 @@ const Dashboard = () => {
   const wellnessData = useWellnessData();
   const vehicleData = useVehicleConnection();
 
-  // Speed state from CARLA WebSocket
+  // Speed state from CARLA WebSocket with fallback
   const [speed, setSpeed] = useState(0);
+  const [isConnected, setIsConnected] = useState(false);
+  const [useSimulation, setUseSimulation] = useState(false);
 
   useEffect(() => {
-    // ✅ Create WebSocket only once when component loads
-    const ws = new WebSocket('ws://localhost:8008/ws/speed');
+    let ws = null;
+    let simulationInterval = null;
+    let connectionTimeout = null;
 
-    // ✅ Listen for incoming messages
-    ws.onmessage = (event) => {
-      try {
-        console.log('Received WebSocket data:', event.data);
-        const data = JSON.parse(event.data);
-        if (data?.speed !== undefined) {
-          setSpeed(data.speed);
+    // Try to connect to WebSocket
+    try {
+      ws = new WebSocket('ws://localhost:8008/ws/speed');
+
+      // Set timeout for connection
+      connectionTimeout = setTimeout(() => {
+        if (!isConnected) {
+          console.log('WebSocket connection timeout, switching to simulation mode');
+          setUseSimulation(true);
+          if (ws) ws.close();
         }
-      } catch (error) {
-        console.log('Error parsing WebSocket data:', error);
-      }
-    };
+      }, 3000);
 
-    // ✅ On WebSocket open
-    ws.onopen = () => {
-      console.log('✅ Connected to CARLA WebSocket');
-    };
+      ws.onopen = () => {
+        console.log('✅ Connected to CARLA WebSocket on port 8008');
+        setIsConnected(true);
+        setUseSimulation(false);
+        clearTimeout(connectionTimeout);
+      };
 
-    // ✅ On Error
-    ws.onerror = (error) => {
-      console.log('❌ WebSocket Error:', error);
-    };
+      ws.onmessage = (event) => {
+        try {
+          console.log('Received WebSocket data:', event.data);
+          const data = JSON.parse(event.data);
+          if (data?.speed !== undefined) {
+            setSpeed(data.speed);
+          }
+        } catch (error) {
+          console.log('Error parsing WebSocket data:', error);
+        }
+      };
 
-    // ✅ Cleanup WebSocket on component unmount
+      ws.onerror = (error) => {
+        console.log('❌ WebSocket Error:', error);
+        setUseSimulation(true);
+        setIsConnected(false);
+      };
+
+      ws.onclose = () => {
+        console.log('⏸ WebSocket Closed');
+        setIsConnected(false);
+        setUseSimulation(true);
+      };
+    } catch (error) {
+      console.log('Failed to create WebSocket:', error);
+      setUseSimulation(true);
+    }
+
+    // Simulation fallback
+    if (useSimulation) {
+      simulationInterval = setInterval(() => {
+        // Simulate realistic speed changes
+        setSpeed(prevSpeed => {
+          const variation = (Math.random() - 0.5) * 5;
+          const newSpeed = Math.max(0, Math.min(120, prevSpeed + variation));
+          return newSpeed || (65 + Math.random() * 10);
+        });
+      }, 2000);
+    }
+
     return () => {
-      ws.close();
-      console.log('❎ WebSocket Closed');
+      if (ws) ws.close();
+      if (simulationInterval) clearInterval(simulationInterval);
+      if (connectionTimeout) clearTimeout(connectionTimeout);
     };
-  }, []); // Empty dependency → runs only once
+  }, []);
 
   return (
     <div className="flex flex-col lg:flex-row gap-4 sm:gap-6 px-4 sm:px-6 lg:px-12 py-4 sm:py-6 lg:py-8">
@@ -53,7 +93,7 @@ const Dashboard = () => {
         metrics={{
           alertness: wellnessData.alertness,
           stress: wellnessData.stress,
-          speed: speed.toFixed(2) + ' km/h'  // ✅ Display speed neatly
+          speed: speed.toFixed(2) + ' km/h'
         }}
       />
       <QuickActionsPanel

@@ -1,111 +1,115 @@
-import { useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+// Use the AppProvider at the root (main.tsx) — do not re-wrap here
 // @ts-ignore
-import TopBar from './components/common/TopBar.jsx';
+import Dashboard from './components/dashboard/Dashboard';
 // @ts-ignore
-import BottomBar from './components/common/BottomBar.jsx';
+import WellnessMonitor from './components/wellness/WellnessMonitor';
 // @ts-ignore
-import Dashboard from './components/dashboard/Dashboard.jsx';
+import EmergencyProtocol from './components/emergency/EmergencyProtocol';
 // @ts-ignore
-import WellnessMonitor from './components/wellness/WellnessMonitor.jsx';
-// @ts-ignore
-import EmergencyProtocol from './components/emergency/EmergencyProtocol.jsx';
-// @ts-ignore
-import AICoPilot from './components/copilot/AICoPilot.jsx';
+import AIAssistant from './components/copilot/AICoPilot';
+import { Brain, AlertTriangle, X } from 'lucide-react';
 
-type Screen = 'dashboard' | 'wellness' | 'emergency' | 'copilot';
+// Use the shared DemoDisclaimerModal component
+// @ts-ignore
+import DemoDisclaimerModal from './components/common/DemoDisclaimerModal.jsx';
 
-export default function App() {
-  const [currentScreen, setCurrentScreen] = useState<Screen>('dashboard');
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+// debug: confirm App renders
+console.log('App component initializing');
 
-  const renderScreen = () => {
-    switch (currentScreen) {
-      case 'dashboard':
-        return <Dashboard />;
-      case 'wellness':
-        return <WellnessMonitor />;
-      case 'emergency':
-        return <EmergencyProtocol />;
-      case 'copilot':
-        return <AICoPilot />;
-      default:
-        return <Dashboard />;
-    }
+const App = () => {
+  const [showDisclaimer, setShowDisclaimer] = useState(true);
+  const [activeScreen, setActiveScreen] = useState('dashboard');
+  const [currentTime, setCurrentTime] = useState('12:45 PM');
+
+  // Update time every minute
+  useEffect(() => {
+    const updateTime = () => {
+      const now = new Date();
+      const hours = now.getHours();
+      const minutes = now.getMinutes();
+      const ampm = hours >= 12 ? 'PM' : 'AM';
+      const displayHours = hours % 12 || 12;
+      setCurrentTime(`${displayHours}:${minutes.toString().padStart(2, '0')} ${ampm}`);
+    };
+
+    updateTime();
+    const interval = setInterval(updateTime, 60000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Check if disclaimer should be shown (check localStorage)
+  useEffect(() => {
+    const seen = localStorage.getItem('demoDisclaimerSeen') || localStorage.getItem('hasSeenDisclaimer');
+    if (seen === 'true') setShowDisclaimer(false);
+  }, []);
+
+  const handleCloseDisclaimer = () => {
+    setShowDisclaimer(false);
+    localStorage.setItem('demoDisclaimerSeen', 'true');
   };
 
-  const tabs = [
+  const navItems = [
     { id: 'dashboard', label: 'Dashboard' },
     { id: 'wellness', label: 'Wellness' },
-    { id: 'emergency', label: 'Emergency' },
-    { id: 'copilot', label: 'AI Co-Pilot' }
+    { id: 'assistant', label: 'AI Assistant' },
+    { id: 'emergency', label: 'Emergency' }
   ];
 
   return (
-    <div className="bg-gray-950 text-white">
-      <div className="max-w-[1920px] mx-auto min-h-screen">
-        <TopBar />
+      <div className="min-h-screen bg-black">
+        {showDisclaimer && <DemoDisclaimerModal open={showDisclaimer} onClose={handleCloseDisclaimer} />}
         
-        {/* Navigation */}
-        <div className="px-4 sm:px-6 lg:px-12 mt-4">
-          {/* Mobile Menu Button */}
-          <div className="md:hidden flex justify-between items-center border-b border-gray-800 pb-4">
-            <h2 className="text-lg font-medium text-white capitalize">{currentScreen.replace('copilot', 'AI Co-Pilot')}</h2>
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-gray-400 hover:text-white transition-colors"
-            >
-              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </button>
-          </div>
-
-          {/* Mobile Menu */}
-          {mobileMenuOpen && (
-            <div className="md:hidden mt-4 space-y-2">
-              {tabs.map((tab) => (
-                <button
-                  key={tab.id}
-                  onClick={() => {
-                    setCurrentScreen(tab.id as Screen);
-                    setMobileMenuOpen(false);
-                  }}
-                  className={`w-full text-left px-4 py-3 rounded-lg transition-colors ${
-                    currentScreen === tab.id
-                      ? 'bg-cyan-500/20 text-cyan-500 border border-cyan-500/30'
-                      : 'text-gray-400 hover:text-gray-300 hover:bg-gray-800'
-                  }`}
-                >
-                  {tab.label}
-                </button>
-              ))}
+        {/* Header */}
+        <div className="bg-gray-900 border-b border-gray-800 px-4 sm:px-6 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-lg flex items-center justify-center">
+                <Brain className="w-6 h-6 text-white" />
+              </div>
+              <div>
+                <h1 className="text-white text-lg sm:text-xl font-bold">VigilanceAI</h1>
+                <p className="text-gray-400 text-xs">Driver Wellness System</p>
+              </div>
             </div>
-          )}
+            
+            <div className="flex items-center gap-4">
+              <div className="text-right hidden sm:block">
+                <div className="text-white text-sm font-medium">{currentTime}</div>
+                <div className="text-gray-400 text-xs">23°C</div>
+              </div>
+            </div>
+          </div>
+        </div>
 
-          {/* Desktop Tabs */}
-          <div className="hidden md:flex gap-2 border-b border-gray-800 overflow-x-auto">
-            {tabs.map((tab) => (
+        {/* Navigation */}
+        <div className="bg-gray-900 border-b border-gray-800 px-4 sm:px-6">
+          <div className="flex gap-1 overflow-x-auto">
+            {navItems.map(item => (
               <button
-                key={tab.id}
-                onClick={() => setCurrentScreen(tab.id as Screen)}
-                className={`px-4 lg:px-6 py-3 text-sm font-medium transition-colors border-b-2 whitespace-nowrap ${
-                  currentScreen === tab.id
-                    ? 'border-cyan-500 text-cyan-500'
-                    : 'border-transparent text-gray-400 hover:text-gray-300'
+                key={item.id}
+                onClick={() => setActiveScreen(item.id)}
+                className={`px-4 py-3 text-sm font-medium whitespace-nowrap transition-colors ${
+                  activeScreen === item.id
+                    ? 'text-cyan-500 border-b-2 border-cyan-500'
+                    : 'text-gray-400 hover:text-white'
                 }`}
               >
-                {tab.label}
+                {item.label}
               </button>
             ))}
           </div>
         </div>
 
-        {/* Screen Content */}
-        <div className={mobileMenuOpen ? 'hidden md:block' : 'block'}>
-          {renderScreen()}
+        {/* Content */}
+        <div className="pb-8">
+          {activeScreen === 'dashboard' && <Dashboard />}
+          {activeScreen === 'wellness' && <WellnessMonitor />}
+          {activeScreen === 'assistant' && <AIAssistant />}
+          {activeScreen === 'emergency' && <EmergencyProtocol />}
         </div>
-        
-        <BottomBar />
-      </div>
-    </div>
+        </div>
   );
-}
+};
+
+export default App;

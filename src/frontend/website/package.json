@@ -1,5 +1,5 @@
 {
-  "homepage": "https://team-manusmriti.github.io/i.mobilothon_Volkswagen_team_manusmriti/",
+  "homepage": "https://team-manusmriti.github.io/i.mobilothon_Volkswagen_team_manusmriti-frontend/",
   "name": "vigilance-ai",
   "version": "1.0.0",
   "description": "AI-powered vehicle monitoring system for car displays",
@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
-    "lint": "eslint src --ext js,jsx"
+    "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0"
   },
   "dependencies": {
     "lucide-react": "^0.263.1",
@@ -24,6 +24,8 @@
     "autoprefixer": "^10.4.14",
     "eslint": "^8.42.0",
     "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.3",
     "gh-pages": "^6.3.0",
     "postcss": "^8.4.24",
     "tailwindcss": "^3.3.0",

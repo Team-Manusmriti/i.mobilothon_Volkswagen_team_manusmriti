@@ -9,7 +9,11 @@
 }
 
 body {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   background-color: #030712;
   color: white;
 }
@@ -17,7 +21,7 @@ body {
 /* Car display optimizations */
 @media screen and (min-width: 1920px) {
   #root {
-    transform-origin: top left;
+    transform-origin: top left;  
   }
 }
 
@@ -53,6 +57,10 @@ body {
   user-select: none;
 }
 
+button {
+  transition: all 0.2s ease-in-out;
+}
+
 /* Animation for cards */
 @keyframes fadeIn {
   from {
@@ -67,4 +75,16 @@ body {
 
 .card-animate {
   animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes progress {
+  0% {
+    width: 0%;
+  }
+  50% {
+    width: 60%;
+  }
+  100% {
+    width: 0%;
+  }
 }

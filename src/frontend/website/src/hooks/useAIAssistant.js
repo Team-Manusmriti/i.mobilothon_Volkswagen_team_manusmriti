@@ -1,6 +1,19 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import { useApp } from '../context/AppContext.jsx';
 
 export const useAIAssistant = () => {
+  const app = useApp();
+
+  const timeoutsRef = useRef([]);
+
+  useEffect(() => {
+    return () => {
+      // cleanup any pending timeouts when hook consumer unmounts
+      timeoutsRef.current.forEach(t => clearTimeout(t));
+      timeoutsRef.current = [];
+    };
+  }, []);
+
   const [state, setState] = useState({
     currentSuggestion: {
       title: 'Time for a break?',
@@ -19,21 +32,42 @@ export const useAIAssistant = () => {
   });
 
   const executeAction = (actionId) => {
-    const action = state.contextActions.find(a => a.id === actionId);
-    console.log('Executing action:', action?.title);
-    
-    // Add to interactions
+    const action = state.contextActions.find(a => a.id === actionId) || {};
+    console.log('Executing action:', action.title);
+
+    // Prepare time and temperature (fallback to app context or compute)
     const now = new Date();
-    const time = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
-    const newInteraction = { 
-      time, 
-      msg: `${action?.title} - Initiated` 
+    const timeStr = app?.currentTime || now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+    const temp = app?.temperature || 'N/A';
+
+    // Initial interaction entry includes time and temperature
+    const newInteraction = {
+      time: timeStr,
+      msg: `${action.title || 'Action'} - Initiated • Temp: ${temp}`
     };
-    
+
     setState(prev => ({
       ...prev,
-      interactions: [newInteraction, ...prev.interactions].slice(0, 5)
+      interactions: [newInteraction, ...prev.interactions].slice(0, 8)
     }));
+
+    // Simulate step updates for the action to appear in recent interactions
+    const stepsByAction = {
+      'Play Calming Music': ['Starting playlist', 'Adjusting volume', 'Music playing'],
+      'Alternate Route': ['Calculating new route', 'Rerouting', 'Navigation started']
+    };
+
+    const steps = stepsByAction[action.title] || ['Initiating', 'Executing', 'Completed'];
+
+    // Schedule step updates at 1.5s intervals and prepend them
+    steps.forEach((stepText, idx) => {
+      const t = setTimeout(() => {
+        const stepTime = new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+        const stepInteraction = { time: stepTime, msg: `${action.title} - ${stepText}` };
+        setState(prev => ({ ...prev, interactions: [stepInteraction, ...prev.interactions].slice(0, 8) }));
+      }, 1500 * (idx + 1));
+      timeoutsRef.current.push(t);
+    });
   };
 
   const dismissSuggestion = () => {

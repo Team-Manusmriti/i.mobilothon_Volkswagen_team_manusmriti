@@ -1,6 +1,6 @@
 import React from 'react';
 import { Heart } from 'lucide-react';
-import Card from '../common/Card';
+import Card from '../common/Card.jsx';
 import MetricCard from '../common/MetricCard';
 
 const WellnessScoreCard = ({ score, condition, metrics }) => (

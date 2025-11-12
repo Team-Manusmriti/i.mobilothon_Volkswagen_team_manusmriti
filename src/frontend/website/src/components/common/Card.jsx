@@ -15,3 +15,6 @@ const Card = ({ children, variant = 'default', borderColor, className = '' }) =>
 };
 
 export default Card;
+
+
+
